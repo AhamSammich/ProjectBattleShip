@@ -610,6 +610,14 @@ def start_screen(game: gb.GameFlow, clock):
                 if event.button == 1 and ui.mouse_over(start_btn):
                     game.break_flow(State.SETUP)
 
+            if event.type == pg.KEYDOWN:
+                keys_pressed = pg.key.get_pressed()
+
+                if keys_pressed[pg.K_RETURN]:
+                    game.break_flow(State.SETUP)
+                elif keys_pressed[pg.K_ESCAPE]:
+                    game.end_flow()
+
         pg.display.flip()
 
 

@@ -6,6 +6,7 @@ This project was developed independently for learning purposes.
 
 ## The Game
 This game is classic BattleShip against an AI opponent with some extra features.
+Running the script in bsmain.py will start the game.
 
 ### Ships
 Each player has five ships, each with a specific feature/skill:
@@ -33,7 +34,7 @@ Each player has five ships, each with a specific feature/skill:
 
 ![ai_target_flow](./Images/bs_comp_target_flow.svg "AI Targeting Flow")
 
-# Assets
+## Assets
 <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 <div>Ship images made by <a href="https://opengameart.org/content/sea-warfare-set-ships-and-more" title="Sea Warfare set">Lowder2</a> from <a href="https://www.opengameart.org/" title="OpenGameArt">www.opengameart.org</a></div>
 <a href="/Sounds/ATTRIBUTION.md">Sound attributions</a>

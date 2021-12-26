@@ -123,25 +123,3 @@ class Frigate(Vessel):
         self.name = f'FF-{rd.randint(85, 200)}'
         self.image_file = os.path.join('Images', self.type, f'Ship{self.type}Hull.png')
         self.image = pg.image.load(self.image_file)
-
-
-# ----- Expanded classes for possible future develepment -----
-
-class SuperCarrier(Carrier):
-    pass
-
-
-class HeavyCruiser(Cruiser):
-    pass
-
-
-class Escort(Frigate):
-    pass
-
-
-class Defender(Destroyer):
-    pass
-
-
-class AttackSub(Submarine):
-    pass

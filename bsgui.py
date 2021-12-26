@@ -82,9 +82,9 @@ class MessageBox:
 
 class Box(pg.Rect):
     """This object is the bridge between the interface and the main loop."""
-    def __init__(self, dimensions: tuple[float, float, float, float], button_name):
+    def __init__(self, dimensions: tuple[float, float, float, float], box_name):
         super().__init__(*dimensions)
-        self.name = button_name
+        self.name = box_name
         self.flash = False
         self.active = False
         self.color1 = Display.RGB_DARK_BLUE

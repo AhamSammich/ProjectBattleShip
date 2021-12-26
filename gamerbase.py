@@ -1,8 +1,6 @@
 from enum import Enum, unique
 from itertools import cycle
-from playsound2 import playsound
 import random as rd
-import asyncio as aio
 import logging as lg
 import time
 
@@ -320,68 +318,3 @@ class GameSkill:
     @property
     def duration(self) -> int:
         return self._duration
-
-
-class GameSound:
-    """
-    Used to queue and play sounds as game runs.
-    Finally found out pygame.mixer exists, so this is no longer used.
-    Might be useful for something later.
-    """
-    def __init__(self):
-        self._queue = []
-        self._running = False
-        self._mute = False
-
-    async def play(self):
-        while self.running and self._queue:
-            sound = next(self.queue)
-            playsound(sound)
-            self._queue.remove(sound)
-            await aio.sleep(0.1)
-
-    def start_queue(self) -> aio.Task:
-        self._running = True
-        return aio.create_task(self.play())
-
-    def add_to_queue(self, sound_file: str):
-        if not self.mute:
-            self._queue.append(sound_file)
-
-    def finish_queue(self):
-        self._running = False
-        self._queue.clear()
-
-    def get_queue(self) -> list[str]:
-        return self._queue
-
-    @staticmethod
-    def run_queue(f):
-        def run_main():
-            main_f = aio.run(f())
-            return main_f
-        return run_main
-
-    @property
-    def mute(self) -> bool:
-        return self._mute
-
-    @mute.setter
-    def mute(self, mute_set: bool):
-        self._mute = mute_set
-        if mute_set:
-            self._queue.clear()
-
-    @property
-    def queue(self) -> iter:
-        return cycle(self._queue)
-
-    @queue.setter
-    def queue(self, sound_list: list[str]):
-        self._queue = sound_list
-
-    # ----- Read-only Properties -----
-
-    @property
-    def running(self) -> bool:
-        return self._running
