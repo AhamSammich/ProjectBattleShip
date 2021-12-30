@@ -35,7 +35,7 @@ class Target:
         # Box is a pygame rectangle for use with the user interface.
         self._box = ui.Box(
             dimensions=(x * size + (x + xy_offset[0]), y * size + (y + xy_offset[1]), size, size),
-            button_name=self.name
+            box_name=self.name
         )
         self._checked = False
         self._result = ''
@@ -487,7 +487,7 @@ def clear_boards(boards: list[Board]):
             target.reset()
 
     for msg in ui.DisplayData.get_messages():
-        msg.text = ''
+        msg.text = '' if msg is not ui.DisplayData.TITLE_MSG else msg.text
 
     ui.DisplayData.PLAYER_MSG.text = 'PLAYER'
     ui.DisplayData.COMP_MSG.text = 'COMP'
@@ -757,7 +757,6 @@ def main():
             if victory(player_fleet, enemy_fleet) and not game.paused:
                 game.break_flow(State.END)
                 ui.DisplayData.ACTION_MSG.text = 'Press ESC to exit game --- OR --- Press SPACEBAR to play again'
-            # Wait for GameSound queue to finish.
             game.progress_flow()
 
     lg.info('GAME END. Thank you for playing!')

@@ -140,7 +140,7 @@ class DisplayData:
     @classmethod
     def get_messages(cls) -> list[MessageBox]:
         # Center messages after text is set.
-        cls.TITLE_MSG.position = DisplayData.TITLE_POS
+        cls.TITLE_MSG.position = cls.TITLE_POS
         cls.TITLE_MSG.change_font(size=36)
         for msg in [cls.TURN_MSG, cls.ACTION_MSG, cls.RESULT_MSG, cls.TITLE_MSG]:
             msg.center(vert=False)
