@@ -306,11 +306,11 @@ def deploy_fleet(board: Board, player: gb.Player) -> list[vs.Vessel]:
                   }
     )
     fleet = player.fleet.values()
-    width = board.SQR_SIZE
+    height = board.SQR_SIZE
     for ship in fleet:
         ship.__setattr__('player', player)
         ship.name = f'{player.name[0]}{ship.name}'
-        height = width * ship.size + ship.size
+        width = height * ship.size + ship.size
         ship.image = pg.transform.scale(ship.image, (width, height))
 
         # ----- Assign Special from skills module -----

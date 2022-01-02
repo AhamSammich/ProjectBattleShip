@@ -6,6 +6,8 @@ name = "pypi"
 [packages]
 pygame = "*"
 playsound2 = "*"
+pyinstaller = "*"
+auto-py-to-exe = "*"
 
 [dev-packages]
 

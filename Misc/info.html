@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Project BattleShip</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato: 100,300,400,700|Luckiest+Guy|Oxygen:300,400"
+        rel="stylesheet">
+    <link href="style.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="./Images/Battleship.png" class="icon"/>
+        <h1 class="project-title">Project BattleShip</h1>
+        <nav>
+        <ul>
+            <li class="navigation"><a href="https://github.com/AhamSammich/ProjectBattleShip" target="_blank">
+                View project on GitHub</a></li>
+        </ul>
+        </nav>
+    </header>
+    <main>
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Size</th>
+                <th scope="col">Special</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="ship">
+                <td>Carrier</td>
+                <td>5 spaces</td>
+                <td rowspan="2">EM Railgun<br><br>
+                Fires a shot through an entire row/column
+                (perpendicular to ship orientation)</td>
+            </tr>
+            <tr class="ship">
+                <td colspan="2"><img src="./Images/ShipCarrierHull.png"/></td>
+            </tr>
+            <tr class="ship">
+                <td>Cruiser</td>
+                <td>4 spaces</td>
+                <td rowspan="2">Missile Salvo<br><br>
+                Fires missiles with %chance to hit surrounding targets.
+                (max 5 shots)</td>
+            </tr>
+            <tr class="ship">
+                <td colspan="2"><img src="./Images/ShipCruiserHull.png"/></td>
+            </tr>
+            <tr>
+                <td>Submarine</td>
+                <td>3 spaces</td>
+                <td rowspan="2">Countermeasures<br><br>
+                (PASSIVE) %-chance to evade detection after being hit.</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="./Images/ShipSubmarineHull.png"/></td>
+            </tr>
+            <tr>
+                <td>Destroyer</td>
+                <td>3 spaces</td>
+                <td rowspan="2">Sonar Blast<br><br>
+                (PASSIVE) %-chance to counter-detect a submarine after being hit.</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="./Images/ShipDestroyerHull.png"/></td>
+            </tr>
+            <tr>
+                <td>Frigate</td>
+                <td>2 spaces</td>
+                <td rowspan="2">Depth Charge<br><br>
+                Deploys an explosive charge with a %chance to hit a submarine.
+                (max 3 charges)</td>
+            </tr>
+            <tr>
+                <td colspan="2"><img src="./Images/ShipFrigateHull.png"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

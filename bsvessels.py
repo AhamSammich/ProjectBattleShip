@@ -81,7 +81,7 @@ class Carrier(Vessel):
         super().__init__()
         self.size = 5
         self.name = f'CV-{rd.randint(85, 200)}'
-        self.image_file = os.path.join('Images', self.type, f'Ship{self.type}Hull.png')
+        self.image_file = os.path.join('Images', f'ShipCarrierHull.png')
         self.image = pg.image.load(self.image_file)
 
 
@@ -91,7 +91,7 @@ class Cruiser(Vessel):
         super().__init__()
         self.size = 4
         self.name = f'CG-{rd.randint(85, 200)}'
-        self.image_file = os.path.join('Images', self.type, f'Ship{self.type}Hull.png')
+        self.image_file = os.path.join('Images', f'ShipCruiserHull.png')
         self.image = pg.image.load(self.image_file)
 
 
@@ -101,7 +101,7 @@ class Submarine(Vessel):
         super().__init__()
         self.size = 3
         self.name = f'SS-{rd.randint(810, 1000)}'
-        self.image_file = os.path.join('Images', self.type, f'Ship{self.type}Hull.png')
+        self.image_file = os.path.join('Images', f'ShipSubMarineHull.png')
         self.image = pg.image.load(self.image_file)
 
 
@@ -111,7 +111,7 @@ class Destroyer(Vessel):
         super().__init__()
         self.size = 3
         self.name = f'DD-{rd.randint(1100, 1500)}'
-        self.image_file = os.path.join('Images', self.type, f'Ship{self.type}Hull.png')
+        self.image_file = os.path.join('Images', f'ShipDestroyerHull.png')
         self.image = pg.image.load(self.image_file)
 
 
@@ -121,5 +121,5 @@ class Frigate(Vessel):
         super().__init__()
         self.size = 2
         self.name = f'FF-{rd.randint(85, 200)}'
-        self.image_file = os.path.join('Images', self.type, f'Ship{self.type}Hull.png')
+        self.image_file = os.path.join('Images', f'ShipFrigateHull.png')
         self.image = pg.image.load(self.image_file)
