@@ -52,10 +52,13 @@ class MessageBox:
         message = self.font.render(self.text, True, self.color, self.background)
         Display.WINDOW.blit(message, self.position)
 
-    def center(self, horiz=True, vert=True):
+    def center(self, over_rect: pg.Rect=None, horiz=True, vert=True):
         x, y = self.position
         msg_width, msg_height = self.font.size(self.text)
-        win_width, win_height = Display.WIDTH, Display.HEIGHT
+        if over_rect:
+            win_width, win_height = over_rect.width + over_rect.x*2, over_rect.height
+        else:
+            win_width, win_height = Display.WIDTH, Display.HEIGHT
 
         new_x, new_y = x, y
         if horiz:
@@ -105,6 +108,11 @@ class DisplayData:
     START_BUTTON.color1, START_BUTTON.color2 = Display.RGB_DARK_BLUE, Display.RGB_YELLOW
     START_BTN_TEXT = MessageBox((0, START_BUTTON.y), text='PLAY GAME', size=48, color=Display.RGB_WHITE)
     START_BTN_TEXT.center(vert=False)
+
+    INFO_BUTTON = Box((10, 25, 150, 40), 'Info Button')
+    INFO_BUTTON.color1, INFO_BUTTON.color2 = Display.RGB_DARK_BLUE, Display.RGB_YELLOW    
+    INFO_BTN_TEXT = MessageBox((0, INFO_BUTTON.y), text='INFO', size=36, color=Display.RGB_WHITE)
+    INFO_BTN_TEXT.center(over_rect=INFO_BUTTON, vert=False)
 
     IMAGES = []
     POSITIONS = []
@@ -166,6 +174,8 @@ class DisplayData:
         for msg in cls.get_messages():
             msg.draw()
 
+        cls.draw_info()
+
     @classmethod
     def draw_start(cls):
         """Draws the start screen displayed upon loading."""
@@ -184,9 +194,20 @@ class DisplayData:
         pg.draw.rect(Display.WINDOW, cls.START_BUTTON.color1, cls.START_BUTTON, 0, 10, 10, 10, 10)
         cls.START_BTN_TEXT.draw()
 
+        cls.draw_info()
+
     @classmethod
     def draw_info(cls):
-        pass
+        
+        if mouse_over(cls.INFO_BUTTON):
+            cls.INFO_BUTTON.color1 = Display.RGB_YELLOW
+            cls.INFO_BTN_TEXT.color = Display.RGB_DARK_BLUE
+        else:
+            cls.INFO_BUTTON.color1 = Display.RGB_DARK_BLUE
+            cls.INFO_BTN_TEXT.color = Display.RGB_YELLOW
+        pg.draw.rect(Display.WINDOW, cls.INFO_BUTTON.color1, cls.INFO_BUTTON, 0, 10, 10, 10, 10)
+        cls.INFO_BTN_TEXT.draw()
+
 
 
 def mouse_over(surface: Union[pg.Rect, pg.Surface]) -> bool:

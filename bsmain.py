@@ -1,3 +1,5 @@
+import os
+import webbrowser
 from typing import Union
 import pygame as pg
 import logging as lg
@@ -607,8 +609,11 @@ def start_screen(game: gb.GameFlow, clock):
                 game.end_flow()
 
             if event.type == pg.MOUSEBUTTONDOWN:
-                if event.button == 1 and ui.mouse_over(start_btn):
-                    game.break_flow(State.SETUP)
+                if event.button == 1:
+                    if ui.mouse_over(start_btn):
+                        game.break_flow(State.SETUP)
+                    elif ui.mouse_over(ui.DisplayData.INFO_BUTTON):
+                        webbrowser.open_new_tab(os.path.join('Misc', 'info.html'))
 
             if event.type == pg.KEYDOWN:
                 keys_pressed = pg.key.get_pressed()
@@ -682,10 +687,11 @@ def main():
 
             # ----- PLAYER INTERACTION -----
             if event.type == pg.MOUSEBUTTONDOWN:
+                if event.button == 1 and ui.mouse_over(ui.DisplayData.INFO_BUTTON):
+                    webbrowser.open_new_tab(os.path.join('Misc', 'info.html'))
+
                 if game.state is State.PLAY:
-
                     if event.button == 1:  # LEFT-CLICK
-
                         Special.check_ship(board1.grid, player_fleet)
                         activated = Special.charge(board1, activated)
                         turn_end = fire(board2)
@@ -693,7 +699,7 @@ def main():
                             switch_players(grid_data, game)
                             game.progress_flow()
 
-                    if event.button == 3:
+                    elif event.button == 3:
                         turn_end = Special.discharge(board2, activated)
                         if turn_end:
                             activated = None
@@ -709,11 +715,11 @@ def main():
                                 'Left-click to select a target --- OR --- Select a ship to activate special'
                             game.progress_flow(start=State.PLAY)
 
-                    if event.button == 3:  # RIGHT-CLICK
+                    elif event.button == 3:  # RIGHT-CLICK
                         pos = board1.select_target()
                         remove_ship(board1, pos)
 
-            if event.type == pg.KEYDOWN:
+            elif event.type == pg.KEYDOWN:
                 keys_pressed = pg.key.get_pressed()
 
                 # Displays window when game ends until any key is pressed.
