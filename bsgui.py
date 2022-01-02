@@ -209,7 +209,6 @@ class DisplayData:
         cls.INFO_BTN_TEXT.draw()
 
 
-
 def mouse_over(surface: Union[pg.Rect, pg.Surface]) -> bool:
     mouse_pos = pg.mouse.get_pos()
     if type(surface) is pg.Surface:

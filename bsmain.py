@@ -1,12 +1,12 @@
 import os
 import webbrowser
-from typing import Union
 import pygame as pg
 import logging as lg
 import random as rd
 import bsgui as ui
 import bsvessels as vs
 import gamerbase as gb
+from typing import Union
 from gamerbase import GameState as State, Log, SkillType as SkType
 
 pg.mixer.init()
