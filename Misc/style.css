@@ -9,14 +9,14 @@ header {
 }
 
 a:hover {
-    color: white;
+    color: #FFF;
 }
 
 a {
-    color: black;
+    color: #000;
 }
 
-tr:hover {
+tr:hover td {
     color: #3587A4;
     background: #FFF;
 }
@@ -28,7 +28,7 @@ tr:hover {
 }
 
 h1 {
-    color: black;
+    color: #000;
 }
 
 body {
@@ -44,7 +44,9 @@ body {
 
 .navigation {
   box-sizing: border-box;
-  background-color: #88ccf190;
+  background-color: #88ccf195;
+  border-bottom: 1px solid #6ac2f195;
+  border-right: 1px solid #6ac2f175;
   overflow: auto;
   padding: 18px 50px;
   position: relative;
@@ -86,12 +88,14 @@ table {
 }
 
 thead th {
-  background: #88CCF190;
+  background: #88CCF195;
+  border-bottom: 1px solid #6ac2f195;
+  border-right: 1px solid #6ac2f175;
   color: #FFF;
   font-family: 'Michroma', sans-serif;
   font-size: 18px;
-  font-weight: 200;
-  letter-spacing: 2px;
+  font-weight: 300;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -102,6 +106,8 @@ tr {
 }
 
 th, td {
+  border-bottom: 1px solid #88CCF195;
+  border-right: 1px solid #88CCF175;
   font-family: 'Maven Pro', sans-serif;
   font-size: 18px;
   font-weight: 500;

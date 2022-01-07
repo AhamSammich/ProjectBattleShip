@@ -1,5 +1,5 @@
 from enum import Enum, unique
-from itertools import cycle
+from collections import deque
 import random as rd
 import logging as lg
 import time
@@ -62,69 +62,65 @@ class GameFlow:
 
     def __init__(self,
                  init_state=GameState.START,
-                 state_order=(GameState.PLAY, GameState.WAIT, GameState.COMP, GameState.WAIT)):
+                 init_stack=(GameState.PLAY, GameState.WAIT, GameState.COMP, GameState.WAIT)):
         self._state = init_state
-        self._order = state_order
-        self.rotation = state_order
-        self._paused = False
+        self._stack = init_stack
+        self.queue = deque(init_stack)
 
     @Log.call_log
     def progress_flow(self, start=None):
-        if not self._paused or start:
-            if start is not None:
-                self.continue_flow(start)
-            else:
-                self._state = next(self._rotation)
-            self.TICKS += 1
+        if start is not None:
+            self.continue_flow(start)
+        else:
+            self._state = self.queue.popleft()
+            self.restack(self.state)
+        self.TICKS += 1
 
     @Log.call_log
     def break_flow(self, set_state: GameState):
         self._state = set_state
-        self._paused = True
 
     def continue_flow(self, from_state: GameState):
-        if from_state not in self.order:
-            raise KeyError(f'State is not in established flow: {self.order}')
+        if from_state not in self.stack:
+            raise KeyError(f'State is not in established flow: {self.stack}')
         else:
-            self._paused = False
             while self._state is not from_state:
-                self.progress_flow()
+                self._state = self.queue.popleft()
+                self.restack(self.state)
 
     @Log.call_log
     def end_flow(self):
         self._state = GameState.QUIT
 
+    def restack(self, state: GameState):
+        self.queue.append(state)
+
     def reset(self, to_menu=False):
-        self._paused = False
-        self.rotation = self.order
+        self.queue = self.stack
         self._state = GameState.START if to_menu else GameState.SETUP
         self.TICKS = 0
 
     @property
-    def rotation(self) -> cycle:
-        return self._rotation
+    def queue(self) -> deque:
+        return self._queue
 
-    @rotation.setter
-    def rotation(self, state_order: tuple[GameState]):
-        self._rotation = cycle(list(state_order))
-        self._order = state_order
+    @queue.setter
+    def queue(self, stack):
+        self._queue = deque(stack)
 
     # ----- Read-only Properties -----
-    @property
-    def paused(self) -> bool:
-        return self._paused
 
     @property
     def state(self) -> GameState:
         return self._state
 
     @property
-    def order(self) -> tuple[GameState]:
-        return self._order
+    def stack(self) -> tuple[GameState]:
+        return self._stack
 
     @property
     def turn(self) -> int:
-        return self.TICKS // len(self.order) + 1
+        return self.TICKS // len(self.queue) + 1
 
 
 class UserProfile:
