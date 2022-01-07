@@ -760,7 +760,7 @@ def main():
 
         if game.state is State.WAIT:
             # Check for victory conditions.
-            if victory(player_fleet, enemy_fleet) and not game.paused:
+            if victory(player_fleet, enemy_fleet):
                 game.break_flow(State.END)
                 ui.DisplayData.ACTION_MSG.text = 'Press ESC to exit game --- OR --- Press SPACEBAR to play again'
             game.progress_flow()
