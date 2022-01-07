@@ -3,6 +3,9 @@
 This is the second iteration of my battleship project made using Python and Pygame.
 This project was developed independently for learning purposes.
 
+<a href="http://referrals.trhou.se/ahamm" target="_blank" rel="noopener"><img src="https://static.teamtreehouse.com/assets/content/referral-badge-grn.png"/></a>
+
+
 
 ## The Game
 This game is classic BattleShip against an AI opponent with some extra features.
