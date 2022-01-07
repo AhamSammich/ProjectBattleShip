@@ -28,11 +28,11 @@ Each player has five ships, each with a specific feature/skill:
 
 ### Main Game Flow
 
-![main_game_flow](./Images/bs_main_flow.svg "Main Game Flow")
+![main_game_flow](Images/bs_main_flow.svg "Main Game Flow")
 
 ### AI Targeting Flow
 
-![ai_target_flow](./Images/bs_comp_target_flow.svg "AI Targeting Flow")
+![ai_target_flow](Images/bs_comp_target_flow.svg "AI Targeting Flow")
 
 ## Assets
 <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
