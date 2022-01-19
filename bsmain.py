@@ -763,7 +763,8 @@ def main():
             if victory(player_fleet, enemy_fleet):
                 game.break_flow(State.END)
                 ui.DisplayData.ACTION_MSG.text = 'Press ESC to exit game --- OR --- Press SPACEBAR to play again'
-            game.progress_flow()
+            else:
+                game.progress_flow()
 
     lg.info('GAME END. Thank you for playing!')
 
